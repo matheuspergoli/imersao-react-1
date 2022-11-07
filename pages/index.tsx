@@ -25,7 +25,7 @@ interface DataProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const response = await fetch('http://localhost:3000/api/playlist')
+	const response = await fetch('https://aluratube-1.vercel.app/api/playlist')
 	const data = await response.json()
 
 	return {
