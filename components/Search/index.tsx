@@ -2,7 +2,7 @@ import React from 'react'
 
 function Search() {
 	return (
-		<div className='flex items-center w-full max-w-sm'>
+		<div className='flex items-center w-full max-w-sm mr-10 sm:mr-0'>
 			<input
 				type='search'
 				name='search'
