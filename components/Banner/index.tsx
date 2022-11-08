@@ -1,5 +1,6 @@
 import React from 'react'
 import { DarkModeContext } from '../../context/DarkModeContext'
+import Search from '../Search'
 import ThemeButton from '../ThemeButton'
 
 function Banner() {
@@ -9,6 +10,7 @@ function Banner() {
 		<header className='bg-backgroundLevel1-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundLevel1-dark'>
 			<div className='flex items-center justify-between p-3'>
 				{darkMode ? <img src='/aluratube-dark.svg' alt='Logo AluraTube' /> : <img src='/aluratube-light.svg' alt='Logo AluraTube' />}
+        <Search />
         <ThemeButton />
 			</div>
 			<figure className='h-72'>
