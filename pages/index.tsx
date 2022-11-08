@@ -1,8 +1,10 @@
+import React from 'react'
 import Head from 'next/head'
 import Slide from '../components/Slide'
 import { GetServerSideProps } from 'next'
 import Banner from '../components/Banner'
 import Profile from '../components/Profile'
+import { DarkModeContext } from '../context/DarkModeContext'
 
 interface DataProps {
 	data: {
@@ -34,8 +36,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 function Home(props: DataProps) {
+	const { darkMode } = React.useContext(DarkModeContext)
+
 	return (
-		<>
+		<div className={darkMode ? 'dark' : ''}>
 			<Head>
 				<title>AluraTube</title>
 			</Head>
@@ -62,7 +66,7 @@ function Home(props: DataProps) {
 					</figure>
 				</section>
 			</main>
-		</>
+		</div>
 	)
 }
 
