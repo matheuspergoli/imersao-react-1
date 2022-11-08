@@ -41,7 +41,7 @@ function Home(props: DataProps) {
 			</Head>
 			<Banner />
 			<Profile />
-			<main className='p-3'>
+			<main className='p-3 bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
 				<Slide title='Podcasts' data={props.data.podcasts} />
 				<Slide title='Músicas' data={props.data.musicas} />
 				<Slide title='Front-end' data={props.data.frontend} />
