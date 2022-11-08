@@ -3,7 +3,7 @@ import React from 'react'
 function Banner() {
 	return (
 		<header>
-			<figure className='my-2 pl-3'>
+			<figure className='p-3'>
 				<img src='/aluratube.svg' alt='Logo AluraTube' />
 			</figure>
 			<figure className='h-72'>
