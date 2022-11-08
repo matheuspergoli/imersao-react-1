@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 
 interface SlideProps {
-  title: string
+	title: string
 	data: {
 		title: string
 		link: string
@@ -28,7 +28,9 @@ function Slide(props: SlideProps) {
 					1536: { slidesPerView: 8 }
 				}}>
 				{props.data.map((playlist) => (
-					<SwiperSlide key={playlist.title}>{<VideoCard {...playlist} />}</SwiperSlide>
+					<SwiperSlide key={playlist.title}>
+						<VideoCard {...playlist} />
+					</SwiperSlide>
 				))}
 			</Swiper>
 		</section>
