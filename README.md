@@ -1,6 +1,6 @@
 # AluraTube
 
-Projeto do primeiro dia da Imersão React da Alura
+Projeto da Imersão React da Alura
 
 [Site online - AluraTube](https://aluratube-1.vercel.app/)
 
@@ -12,6 +12,7 @@ Projeto do primeiro dia da Imersão React da Alura
 - Typescript
 - TailwindCSS
 - SwiperJS
+- React Icons
 
 ## Mudanças que fiz no projeto
 - Ao contrário do que é feito na aula, eu escolhi TailwindCSS ao invés do Styled-Components.
@@ -21,3 +22,5 @@ utilizei a API Route do NextJS, um tópico que venho querendo aprender e já apr
 então todos os dados, músicas e vídeos vem da API do NextJS
 
 - Foi utilizado o SwiperJS para fazer os Slides de vídeos
+
+- O Switcher do Dark Mode foi feito diferente, utilizei a biblioteca React Icons para pegar os icones
