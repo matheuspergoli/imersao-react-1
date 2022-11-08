@@ -7,7 +7,7 @@ function Banner() {
 				<img src='/aluratube.svg' alt='Logo AluraTube' />
 			</figure>
 			<figure className='h-72'>
-				<img src='https://source.unsplash.com/random' alt='Banner' className='w-full h-full object-cover' />
+				<img src='https://source.unsplash.com/random/?Programming' alt='Banner' className='w-full h-full object-cover' />
 			</figure>
 		</header>
 	)
