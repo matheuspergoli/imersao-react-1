@@ -16,7 +16,7 @@ interface SlideProps {
 function Slide(props: SlideProps) {
 	return (
 		<section>
-			<h2 className='text-xl font-bold mb-2 border-b'>{props.title}</h2>
+			<h2 className='text-xl font-bold mb-2'>{props.title}</h2>
 			<Swiper
 				breakpoints={{
 					320: { slidesPerView: 1 },
