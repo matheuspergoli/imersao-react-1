@@ -13,9 +13,9 @@ function Search() {
 				placeholder='Buscar...'
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
-				className='w-full border p-1 outline-none dark:border-borderBase-dark dark:bg-backgroundBase-dark'
+				className='w-full border p-1 outline-none transition dark:border-borderBase-dark dark:bg-backgroundBase-dark'
 			/>
-			<button className='border p-1 w-16 text-center bg-backgroundLevel2-light dark:bg-backgroundLevel2-dark dark:border-borderBase-dark'>
+			<button className='border p-1 w-16 text-center transition bg-backgroundLevel2-light dark:bg-backgroundLevel2-dark dark:border-borderBase-dark'>
 				🔎
 			</button>
 		</div>
