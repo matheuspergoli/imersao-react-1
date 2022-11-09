@@ -1,11 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
+import Menu from '../components/Menu'
 import Slide from '../components/Slide'
 import { GetServerSideProps } from 'next'
 import Banner from '../components/Banner'
 import Profile from '../components/Profile'
-import { DarkModeContext } from '../context/DarkModeContext'
 import { SearchContext } from '../context/SearchContext'
+import { DarkModeContext } from '../context/DarkModeContext'
 
 interface DataProps {
 	data: {
@@ -55,6 +56,7 @@ function Home(props: DataProps) {
 			<Head>
 				<title>AluraTube</title>
 			</Head>
+			<Menu />
 			<Banner />
 			<Profile />
 			<main className='p-3 h-screen transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
