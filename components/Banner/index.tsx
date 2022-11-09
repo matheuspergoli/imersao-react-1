@@ -7,7 +7,7 @@ function Banner() {
 	const { darkMode } = React.useContext(DarkModeContext)
 
 	return (
-		<header className='bg-backgroundLevel1-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundLevel1-dark'>
+		<header className='transition bg-backgroundLevel1-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundLevel1-dark'>
 			<div className='flex items-center justify-between p-3'>
 				{darkMode ? (
 					<img src='/aluratube-dark.svg' alt='Logo AluraTube' className='hidden sm:block' />
