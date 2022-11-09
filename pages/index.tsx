@@ -27,6 +27,12 @@ interface DataProps {
 	}
 }
 
+interface FilterDataProps {
+	title: string
+	link: string
+	thumb: string
+}
+
 export const getServerSideProps: GetServerSideProps = async () => {
 	const response = await fetch('https://aluratube-1.vercel.app/api/playlist')
 	const data = await response.json()
@@ -40,6 +46,10 @@ function Home(props: DataProps) {
 	const { darkMode } = React.useContext(DarkModeContext)
 	const { search } = React.useContext(SearchContext)
 
+	function filterDataBySearch(data: Array<FilterDataProps>) {
+		return search ? data.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : data
+	}
+
 	return (
 		<div className={darkMode ? 'dark' : ''}>
 			<Head>
@@ -48,18 +58,9 @@ function Home(props: DataProps) {
 			<Banner />
 			<Profile />
 			<main className='p-3 h-screen transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
-				<Slide
-					title='Podcasts'
-					data={search ? props.data.podcasts.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.podcasts}
-				/>
-				<Slide
-					title='Músicas'
-					data={search ? props.data.musicas.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.musicas}
-				/>
-				<Slide
-					title='Front-end'
-					data={search ? props.data.frontend.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.frontend}
-				/>
+				<Slide title='Podcasts' data={filterDataBySearch(props.data.podcasts)} />
+				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
+				<Slide title='Front-end' data={filterDataBySearch(props.data.frontend)} />
 
 				<h2 className='text-xl font-bold mb-2 mt-10'>AluraTubes Favoritos</h2>
 				<section className='flex items-center gap-2'>
