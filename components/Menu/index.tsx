@@ -1,8 +1,8 @@
 import React from 'react'
+import Link from 'next/link'
 import Search from '../Search'
 import ThemeButton from '../ThemeButton'
 import { DarkModeContext } from '../../context/DarkModeContext'
-import Link from 'next/link'
 
 function Menu() {
 	const { darkMode } = React.useContext(DarkModeContext)
