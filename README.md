@@ -4,7 +4,7 @@ Projeto da Imersão React da Alura
 
 [Site online - AluraTube](https://aluratube-1.vercel.app/)
 
-![AluraTube](/public/aluratube-screen.png 'AluraTube')
+![AluraTube](/public/aluratube-screen.png 'AluraTube NextJS')
 
 ## Tecnologias que utilizei
 
