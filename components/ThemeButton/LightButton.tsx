@@ -12,7 +12,7 @@ function LightButton() {
 	}
 
 	return (
-		<button className='flex items-center gap-1 py-1 px-3 rounded-md bg-backgroundLevel1-light text-textColorBase-light' onClick={changeTheme}>
+		<button className='flex items-center gap-1 py-1 px-3 w-20 rounded-md bg-backgroundLevel1-light text-textColorBase-light' onClick={changeTheme}>
 			<SunIcon />
 			Light
 		</button>
