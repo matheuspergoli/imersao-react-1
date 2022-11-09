@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next'
 import Banner from '../components/Banner'
 import Profile from '../components/Profile'
 import { DarkModeContext } from '../context/DarkModeContext'
+import { SearchContext } from '../context/SearchContext'
 
 interface DataProps {
 	data: {
@@ -37,6 +38,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 function Home(props: DataProps) {
 	const { darkMode } = React.useContext(DarkModeContext)
+	const { search } = React.useContext(SearchContext)
 
 	return (
 		<div className={darkMode ? 'dark' : ''}>
@@ -45,10 +47,19 @@ function Home(props: DataProps) {
 			</Head>
 			<Banner />
 			<Profile />
-			<main className='p-3 bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
-				<Slide title='Podcasts' data={props.data.podcasts} />
-				<Slide title='Músicas' data={props.data.musicas} />
-				<Slide title='Front-end' data={props.data.frontend} />
+			<main className='p-3 h-screen bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
+				<Slide
+					title='Podcasts'
+					data={search ? props.data.podcasts.filter((video) => video.title.toLowerCase().includes(search)) : props.data.podcasts}
+				/>
+				<Slide
+					title='Músicas'
+					data={search ? props.data.musicas.filter((video) => video.title.toLowerCase().includes(search)) : props.data.musicas}
+				/>
+				<Slide
+					title='Front-end'
+					data={search ? props.data.frontend.filter((video) => video.title.toLowerCase().includes(search)) : props.data.frontend}
+				/>
 
 				<h2 className='text-xl font-bold mb-2'>AluraTubes Favoritos</h2>
 				<section className='flex items-center gap-2'>
