@@ -61,7 +61,7 @@ function Home(props: DataProps) {
 					data={search ? props.data.frontend.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.frontend}
 				/>
 
-				<h2 className='text-xl font-bold mb-2'>AluraTubes Favoritos</h2>
+				<h2 className='text-xl font-bold mb-2 mt-10'>AluraTubes Favoritos</h2>
 				<section className='flex items-center gap-2'>
 					<figure className='flex flex-col justify-center items-center w-fit text-center'>
 						<a href='https://github.com/peas' target='_blank' rel='noreferrer'>
