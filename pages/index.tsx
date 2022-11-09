@@ -50,15 +50,15 @@ function Home(props: DataProps) {
 			<main className='p-3 h-screen bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
 				<Slide
 					title='Podcasts'
-					data={search ? props.data.podcasts.filter((video) => video.title.toLowerCase().includes(search)) : props.data.podcasts}
+					data={search ? props.data.podcasts.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.podcasts}
 				/>
 				<Slide
 					title='Músicas'
-					data={search ? props.data.musicas.filter((video) => video.title.toLowerCase().includes(search)) : props.data.musicas}
+					data={search ? props.data.musicas.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.musicas}
 				/>
 				<Slide
 					title='Front-end'
-					data={search ? props.data.frontend.filter((video) => video.title.toLowerCase().includes(search)) : props.data.frontend}
+					data={search ? props.data.frontend.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.frontend}
 				/>
 
 				<h2 className='text-xl font-bold mb-2'>AluraTubes Favoritos</h2>
