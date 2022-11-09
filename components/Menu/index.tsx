@@ -8,7 +8,7 @@ function Menu() {
 	const { darkMode } = React.useContext(DarkModeContext)
 
 	return (
-		<div className='flex items-center justify-between p-3'>
+		<nav className='flex items-center justify-between p-3 transition bg-backgroundLevel1-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundLevel1-dark'>
 			{darkMode ? (
 				<Link href='/'>
 					<img src='/aluratube-dark.svg' alt='Logo AluraTube' className='hidden sm:block' />
@@ -20,7 +20,7 @@ function Menu() {
 			)}
 			<Search />
 			<ThemeButton />
-		</div>
+		</nav>
 	)
 }
 
