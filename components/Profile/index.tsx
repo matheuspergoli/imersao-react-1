@@ -2,7 +2,7 @@ import React from 'react'
 
 function Profile() {
 	return (
-		<article className='flex items-center gap-2 p-3 bg-backgroundLevel1-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundLevel1-dark'>
+		<article className='flex items-center gap-2 p-3 transition bg-backgroundLevel1-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundLevel1-dark'>
 			<figure className='w-16'>
 				<img src='https://github.com/matheuspergoli.png' alt='Profile image' className='rounded-full border' />
 			</figure>
