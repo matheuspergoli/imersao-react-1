@@ -47,7 +47,7 @@ function Home(props: DataProps) {
 			</Head>
 			<Banner />
 			<Profile />
-			<main className='p-3 h-screen bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
+			<main className='p-3 h-screen transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
 				<Slide
 					title='Podcasts'
 					data={search ? props.data.podcasts.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : props.data.podcasts}
