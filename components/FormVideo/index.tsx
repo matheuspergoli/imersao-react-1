@@ -12,8 +12,8 @@ function FormVideo() {
 		}
 	}
 
-	function sendVideo(video: { title: string; url: string }) {
-		fetch('https://aluratube-1.vercel.app/api/playlist', {
+	async function sendVideo(video: { title: string; url: string }) {
+		await fetch('https://aluratube-1.vercel.app/api/playlist', {
 			method: 'POST',
 			body: JSON.stringify(video)
 		})
