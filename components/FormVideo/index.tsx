@@ -13,7 +13,7 @@ function FormVideo() {
 	}
 
 	function sendVideo(video: { title: string; url: string }) {
-		fetch('http://localhost:3000/api/playlist', {
+		fetch('https://aluratube-1.vercel.app/api/playlist', {
 			method: 'POST',
 			body: JSON.stringify(video)
 		})
