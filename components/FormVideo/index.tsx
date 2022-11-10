@@ -5,6 +5,7 @@ import FormValidation from '../../validation/FormValidation'
 import { IoMdCloseCircle as CloseIcon } from 'react-icons/io'
 
 function FormVideo() {
+	const [loading, setLoading] = React.useState(false)
 	const dialogRef = React.useRef<any>()
 
 	function showModal() {
@@ -14,10 +15,12 @@ function FormVideo() {
 	}
 
 	async function sendVideo(video: { title: string; url: string }) {
+		setLoading(true)
 		await fetch('https://aluratube-1.vercel.app/api/playlist', {
 			method: 'POST',
 			body: JSON.stringify(video)
 		})
+		setLoading(false)
 		closeModal()
 		window.location.reload()
 	}
@@ -65,7 +68,7 @@ function FormVideo() {
 							<button
 								className='w-full p-1 rounded-md text-white bg-backgroundLevel1-dark dark:text-black dark:bg-backgroundLevel1-light'
 								type='submit'>
-								Enviar
+								{loading ? 'Enviando...' : 'Enviar'}
 							</button>
 						</Form>
 					)}
