@@ -185,7 +185,7 @@ const data: DataProps = {
 
 function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
-		const video = req.body
+		const video = JSON.parse(req.body)
 		const getIdRegExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
 		const id = video.url.match(getIdRegExp)
 		if (id && id[7].length == 11 ? id[7] : false) {
