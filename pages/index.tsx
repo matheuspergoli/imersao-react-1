@@ -24,6 +24,11 @@ interface DataProps {
 			title: string
 			link: string
 			thumb: string
+		}[],
+    novos: {
+			title: string
+			link: string
+			thumb: string
 		}[]
 	}
 }
@@ -59,7 +64,8 @@ function Home(props: DataProps) {
 			<Menu />
 			<Banner />
 			<Profile />
-			<main className='p-3 h-screen transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
+			<main className='p-3 transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
+				<Slide title='Novos' data={filterDataBySearch(props.data.novos)} />
 				<Slide title='Podcasts' data={filterDataBySearch(props.data.podcasts)} />
 				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
 				<Slide title='Front-end' data={filterDataBySearch(props.data.frontend)} />
