@@ -1,6 +1,29 @@
 import { NextApiResponse, NextApiRequest } from 'next'
 
-const data = {
+interface DataProps {
+	frontend: {
+		title: string
+		link: string
+		thumb: string
+	}[]
+	musicas: {
+		title: string
+		link: string
+		thumb: string
+	}[]
+	podcasts: {
+		title: string
+		link: string
+		thumb: string
+	}[]
+	novos: {
+		title: string
+		link: string
+		thumb: string
+	}[]
+}
+
+const data: DataProps = {
 	frontend: [
 		{
 			title: 'Next.js 13… this changes everything',
@@ -156,11 +179,25 @@ const data = {
 			link: '/video/6JconlgrO0o',
 			thumb: 'https://i.ytimg.com/vi/6JconlgrO0o/hqdefault.jpg'
 		}
-	]
+	],
+	novos: []
 }
 
 function handler(req: NextApiRequest, res: NextApiResponse) {
-	return res.status(200).json(data)
+	if (req.method === 'POST') {
+		const video = req.body
+		const getIdRegExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+		const id = video.url.match(getIdRegExp)
+		if (id && id[7].length == 11 ? id[7] : false) {
+			const newVideo = { title: video.title, link: `/video/${id[7]}`, thumb: `https://i.ytimg.com/vi/${id[7]}/hqdefault.jpg` }
+			data.novos.push(newVideo)
+			return res.status(200).json(newVideo)
+		} else {
+			return res.status(400).json({ msg: 'Failed' })
+		}
+	}
+
+	if (req.method === 'GET') res.status(200).json(data)
 }
 
 export default handler
