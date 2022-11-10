@@ -15,7 +15,7 @@ interface SlideProps {
 
 function Slide(props: SlideProps) {
 	return (
-		<section>
+		<section className='mb-5'>
 			{props.data.length === 0 ? null : <h2 className='text-xl font-bold mb-2'>{props.title}</h2>}
 			<Swiper
 				breakpoints={{
