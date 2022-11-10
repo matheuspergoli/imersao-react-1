@@ -14,6 +14,8 @@ Projeto da Imersão React da Alura
 - TailwindCSS
 - SwiperJS
 - React Icons
+- Formik
+- Yup
 
 ## Mudanças que fiz no projeto
 
@@ -26,3 +28,9 @@ Projeto da Imersão React da Alura
 - Foi utilizado o SwiperJS para fazer os Slides de vídeos
 
 - O Switcher do Dark Mode foi feito diferente, utilizei a biblioteca React Icons para pegar os icones
+
+- O modal para adicionar vídeos foi feito com a tag Dialog do HTML
+
+- O formulário foi feito com Formik e Yup para validações
+
+- Ao adicionar um novo vídeo é feito um POST Request na API feita no Next e então é adicionado ao site
