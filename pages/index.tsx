@@ -6,6 +6,7 @@ import { GetServerSideProps } from 'next'
 import Banner from '../components/Banner'
 import Profile from '../components/Profile'
 import FormVideo from '../components/FormVideo'
+import { GraphQLClient, gql } from 'graphql-request'
 import { SearchContext } from '../context/SearchContext'
 import { DarkModeContext } from '../context/DarkModeContext'
 
@@ -25,14 +26,32 @@ interface DataProps {
 			title: string
 			link: string
 			thumb: string
-		}[],
-    novos: {
+		}[]
+		novos: {
+			title: string
+			link: string
+			thumb: string
+		}[]
+	}
+	cmsVideos: {
+		allVideos: {
 			title: string
 			link: string
 			thumb: string
 		}[]
 	}
 }
+
+const query = gql`
+	query {
+		allVideos {
+			id
+			title
+			link
+			thumb
+		}
+	}
+`
 
 interface FilterDataProps {
 	title: string
@@ -41,11 +60,22 @@ interface FilterDataProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
+	const API_KEY = process.env.PUBLIC_API_KEY
+	const endpoint = 'https://graphql.datocms.com/'
+
 	const response = await fetch('https://aluratube-1.vercel.app/api/playlist')
 	const data = await response.json()
 
+	const graphQLClient = new GraphQLClient(endpoint, {
+		headers: {
+			'content-type': 'application/json',
+			authorization: 'Bearer ' + API_KEY
+		}
+	})
+	const cmsVideos = await graphQLClient.request(query)
+
 	return {
-		props: { data }
+		props: { data, cmsVideos }
 	}
 }
 
@@ -65,9 +95,10 @@ function Home(props: DataProps) {
 			<Menu />
 			<Banner />
 			<Profile />
-      <FormVideo />
+			<FormVideo />
 			<main className='p-3 transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
 				<Slide title='Novos' data={filterDataBySearch(props.data.novos)} />
+				<Slide title='DatoCMS' data={filterDataBySearch(props.cmsVideos.allVideos)} />
 				<Slide title='Podcasts' data={filterDataBySearch(props.data.podcasts)} />
 				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
 				<Slide title='Front-end' data={filterDataBySearch(props.data.frontend)} />
