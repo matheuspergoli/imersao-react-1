@@ -35,12 +35,15 @@ function FormVideo() {
 				ref={dialogRef}
 				className='transition max-w-sm w-full backdrop:bg-opacity-70 backdrop:bg-black bg-backgroundLevel1-light dark:bg-backgroundLevel1-dark'>
 				<Formik validationSchema={FormValidation} onSubmit={(values) => sendVideo(values)} initialValues={{ title: '', url: '' }}>
-					{({ errors, touched }) => (
+					{({ errors, touched, resetForm }) => (
 						<Form className='flex flex-col items-center justify-center'>
 							<button
 								className='flex items-center justify-center rounded-full text-2xl font-semibold absolute top-2 right-4 text-white'
 								type='button'
-								onClick={closeModal}>
+								onClick={() => {
+									resetForm()
+									closeModal()
+								}}>
 								<CloseIcon className='text-black dark:text-white' />
 							</button>
 							<div className='flex flex-col items-center justify-center gap-5 mt-10 mb-5 relative w-full'>
