@@ -48,29 +48,33 @@ function FormVideo() {
 							</button>
 							<div className='flex flex-col items-center justify-center gap-5 mt-10 mb-5 relative w-full'>
 								<div className='w-full'>
+									<label htmlFor='title' className='text-black dark:text-white'>
+										Título
+									</label>
 									<Field
 										id='title'
 										name='title'
 										type='text'
-										placeholder='Título'
+										placeholder='Título do vídeo'
 										className='p-1 rounded-md outline-none w-full text-white bg-backgroundLevel1-dark dark:bg-backgroundLevel1-light dark:text-black'
 									/>
 									{errors.title && touched.title && <p className='text-center text-red-500'>{errors.title}</p>}
 								</div>
 								<div className='w-full'>
+									<label htmlFor='url' className='text-black dark:text-white'>
+										URL
+									</label>
 									<Field
 										id='url'
 										name='url'
 										type='text'
-										placeholder='URL'
+										placeholder='URL do vídeo'
 										className='p-1 rounded-md outline-none w-full text-white bg-backgroundLevel1-dark dark:bg-backgroundLevel1-light dark:text-black'
 									/>
 									{errors.url && touched.url && <p className='text-center text-red-500'>{errors.url}</p>}
 								</div>
 							</div>
-							<button
-								className='w-full p-1 rounded-md text-white bg-backgroundLevel1-dark dark:text-black dark:bg-backgroundLevel1-light'
-								type='submit'>
+							<button className='w-full p-1 rounded-md mt-5 text-black bg-red-500' type='submit'>
 								{loading ? 'Enviando...' : 'Enviar'}
 							</button>
 						</Form>
