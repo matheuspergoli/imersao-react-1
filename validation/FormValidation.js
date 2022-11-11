@@ -1,8 +1,14 @@
 import * as Yup from 'yup'
 
+const regExYoutubeURL =
+	/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
+
 const FormValidation = Yup.object().shape({
-	title: Yup.string().min(1, 'Preencha com o nome do Vídeo').required('Campo obrigatório'),
-	url: Yup.string().min(1, 'Preencha com a URL do vídeo').required('Campo obrigatório')
+	title: Yup.string().min(10, 'Título deve ter no mínimo 10 caracteres').required('Campo obrigatório'),
+	url: Yup.string()
+		.min(30, 'Certifique-se de colocar uma URL válida de no mínimo 30 caracteres')
+		.matches(regExYoutubeURL, 'Preencha com uma URL válida')
+		.required('Campo obrigatório')
 })
 
 export default FormValidation
