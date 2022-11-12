@@ -9,6 +9,7 @@ import FormVideo from '../components/FormVideo'
 import { GraphQLClient, gql } from 'graphql-request'
 import { SearchContext } from '../context/SearchContext'
 import { DarkModeContext } from '../context/DarkModeContext'
+import AluraTubes from '../components/AluraTubes'
 
 interface DataProps {
 	data: {
@@ -115,21 +116,7 @@ function Home(props: DataProps) {
 				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
 				<Slide title='Front-end' data={filterDataBySearch(props.data.frontend)} />
 
-				<h2 className='text-xl font-bold mb-2 mt-10'>AluraTubes Favoritos</h2>
-				<section className='flex items-center gap-2'>
-					<figure className='flex flex-col justify-center items-center w-fit text-center'>
-						<a href='https://github.com/peas' target='_blank' rel='noreferrer'>
-							<img src='https://github.com/peas.png' alt='AluraTuber' className='w-20 rounded-full' />
-						</a>
-						<figcaption>@peas</figcaption>
-					</figure>
-					<figure className='flex flex-col justify-center items-center w-fit text-center'>
-						<a href='https://github.com/omariosouto' target='_blank' rel='noreferrer'>
-							<img src='https://github.com/omariosouto.png' alt='AluraTuber' className='w-20 rounded-full' />
-						</a>
-						<figcaption>@omariosouto</figcaption>
-					</figure>
-				</section>
+				<AluraTubes />
 			</main>
 		</div>
 	)
