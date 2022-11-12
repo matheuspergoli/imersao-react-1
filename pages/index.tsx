@@ -43,6 +43,11 @@ interface DataProps {
 			link: string
 			thumb: string
 		}[]
+		allWarcrafts: {
+			title: string
+			link: string
+			thumb: string
+		}[]
 	}
 }
 
@@ -59,6 +64,12 @@ const query = gql`
 			link
 			thumb
 			title
+		}
+		allWarcrafts {
+			id
+			link
+			title
+			thumb
 		}
 	}
 `
@@ -110,8 +121,9 @@ function Home(props: DataProps) {
 			<FormVideo />
 			<main className='p-3 transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
 				<Slide title='Novos' data={filterDataBySearch(props.data.novos)} />
-				<Slide title='Phonk' data={filterDataBySearch(props.data.allPhonks)} />
+				<Slide title='World of Wacraft' data={filterDataBySearch(props.data.allWarcrafts)} />
 				<Slide title='Aleatório' data={filterDataBySearch(props.data.allVideos)} />
+				<Slide title='Phonk' data={filterDataBySearch(props.data.allPhonks)} />
 				<Slide title='Podcasts' data={filterDataBySearch(props.data.podcasts)} />
 				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
 				<Slide title='Front-end' data={filterDataBySearch(props.data.frontend)} />
