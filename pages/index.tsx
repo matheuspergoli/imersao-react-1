@@ -32,9 +32,12 @@ interface DataProps {
 			link: string
 			thumb: string
 		}[]
-	}
-	cmsVideos: {
 		allVideos: {
+			title: string
+			link: string
+			thumb: string
+		}[]
+		allPhonks: {
 			title: string
 			link: string
 			thumb: string
@@ -50,21 +53,21 @@ const query = gql`
 			link
 			thumb
 		}
+		allPhonks {
+			id
+			link
+			thumb
+			title
+		}
 	}
 `
-
-interface FilterDataProps {
-	title: string
-	link: string
-	thumb: string
-}
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const API_KEY = process.env.PUBLIC_API_KEY
 	const endpoint = 'https://graphql.datocms.com/'
 
 	const response = await fetch('https://aluratube-1.vercel.app/api/playlist')
-	const data = await response.json()
+	const videos = await response.json()
 
 	const graphQLClient = new GraphQLClient(endpoint, {
 		headers: {
@@ -74,14 +77,22 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	})
 	const cmsVideos = await graphQLClient.request(query)
 
+	const data = { ...videos, ...cmsVideos }
+
 	return {
-		props: { data, cmsVideos }
+		props: { data }
 	}
 }
 
+interface FilterDataProps {
+	title: string
+	link: string
+	thumb: string
+}
+
 function Home(props: DataProps) {
-	const { darkMode } = React.useContext(DarkModeContext)
 	const { search } = React.useContext(SearchContext)
+	const { darkMode } = React.useContext(DarkModeContext)
 
 	function filterDataBySearch(data: Array<FilterDataProps>) {
 		return search ? data.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : data
@@ -98,7 +109,8 @@ function Home(props: DataProps) {
 			<FormVideo />
 			<main className='p-3 transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
 				<Slide title='Novos' data={filterDataBySearch(props.data.novos)} />
-				<Slide title='DatoCMS' data={filterDataBySearch(props.cmsVideos.allVideos)} />
+				<Slide title='Phonk' data={filterDataBySearch(props.data.allPhonks)} />
+				<Slide title='Aleatório' data={filterDataBySearch(props.data.allVideos)} />
 				<Slide title='Podcasts' data={filterDataBySearch(props.data.podcasts)} />
 				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
 				<Slide title='Front-end' data={filterDataBySearch(props.data.frontend)} />
