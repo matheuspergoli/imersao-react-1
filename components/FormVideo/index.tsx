@@ -77,7 +77,7 @@ function FormVideo() {
 									{errors.url && touched.url && <p className='text-center text-red-500'>{errors.url}</p>}
 								</div>
 							</div>
-							<button className='w-full p-1 rounded-md mt-5 text-black bg-red-500' type='submit'>
+							<button className='w-full p-1 rounded-md mt-5 font-semibold text-black bg-red-600' type='submit'>
 								{loading ? 'Enviando...' : 'Enviar'}
 							</button>
 						</Form>
