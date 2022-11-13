@@ -14,6 +14,9 @@ module.exports = {
 				'backgroundLevel2-dark': '#313131',
 				'borderBase-dark': '#383838',
 				'textColorBase-dark': '#FFFFFF'
+			},
+			height: {
+				'iframe-video': '500px'
 			}
 		}
 	},
