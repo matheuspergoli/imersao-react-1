@@ -27,7 +27,7 @@ function Video() {
 						className='block w-fit font-medium px-3 py-1 mb-5 rounded-md bg-backgroundBase-dark text-textColorBase-dark dark:text-textColorBase-light dark:bg-backgroundBase-light'>
 						Voltar
 					</Link>
-					<iframe src={`https://youtube.com/embed/${id}`} allowFullScreen className='max-w-2xl w-full h-96 mx-auto'></iframe>
+					<iframe src={`https://youtube.com/embed/${id}`} allowFullScreen className='max-w-4xl w-full h-iframe-video mx-auto'></iframe>
 				</main>
 			</div>
 		</>
