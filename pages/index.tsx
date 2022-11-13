@@ -33,11 +33,6 @@ interface DataProps {
 			link: string
 			thumb: string
 		}[]
-		allVideos: {
-			title: string
-			link: string
-			thumb: string
-		}[]
 		allPhonks: {
 			title: string
 			link: string
@@ -58,12 +53,6 @@ interface DataProps {
 
 const query = gql`
 	query {
-		allVideos {
-			id
-			title
-			link
-			thumb
-		}
 		allPhonks {
 			id
 			link
@@ -134,7 +123,6 @@ function Home(props: DataProps) {
 				<Slide title='Novos' data={filterDataBySearch(props.data.novos)} />
 				<Slide title='Sugestões' data={filterDataBySearch(props.data.allSuggestions)} />
 				<Slide title='World of Wacraft' data={filterDataBySearch(props.data.allWarcrafts)} />
-				<Slide title='Aleatório' data={filterDataBySearch(props.data.allVideos)} />
 				<Slide title='Phonk' data={filterDataBySearch(props.data.allPhonks)} />
 				<Slide title='Podcasts' data={filterDataBySearch(props.data.podcasts)} />
 				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
