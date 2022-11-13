@@ -1,12 +1,14 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import { Formik, Form, Field } from 'formik'
 import { RiVideoAddFill as AddIcon } from 'react-icons/ri'
 import FormValidation from '../../validation/FormValidation'
 import { IoMdCloseCircle as CloseIcon } from 'react-icons/io'
 
 function FormVideo() {
-	const [loading, setLoading] = React.useState(false)
+	const router = useRouter()
 	const dialogRef = React.useRef<any>()
+	const [loading, setLoading] = React.useState(false)
 
 	function showModal() {
 		if (!dialogRef.current.hasAttribute('open')) {
@@ -22,7 +24,8 @@ function FormVideo() {
 		})
 		setLoading(false)
 		closeModal()
-		window.location.reload()
+		router.replace(router.asPath)
+		// window.location.reload()
 	}
 
 	function closeModal() {
