@@ -6,7 +6,7 @@ const regExYoutubeURL =
 const FormValidation = Yup.object().shape({
 	title: Yup.string().min(10, 'Título deve ter no mínimo 10 caracteres').required('Campo obrigatório'),
 	url: Yup.string()
-		.min(30, 'Certifique-se de colocar uma URL válida de no mínimo 30 caracteres')
+		.min(20, 'Certifique-se de colocar uma URL válida de no mínimo 20 caracteres')
 		.matches(regExYoutubeURL, 'Preencha com uma URL válida')
 		.required('Campo obrigatório')
 })
