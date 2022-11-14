@@ -1,9 +1,12 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form, Field } from 'formik'
+import { ToastContainer, toast } from 'react-toastify'
 import { RiVideoAddFill as AddIcon } from 'react-icons/ri'
 import FormValidation from '../../validation/FormValidation'
 import { IoMdCloseCircle as CloseIcon } from 'react-icons/io'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 function FormVideo() {
 	const router = useRouter()
@@ -25,6 +28,9 @@ function FormVideo() {
 		setLoading(false)
 		closeModal()
 		router.replace(router.asPath)
+		toast.success('Vídeo adicionado!', {
+			autoClose: 3000
+		})
 		// window.location.reload()
 	}
 
@@ -89,6 +95,7 @@ function FormVideo() {
 				onClick={showModal}>
 				<AddIcon className='text-white' />
 			</button>
+			<ToastContainer />
 		</>
 	)
 }
