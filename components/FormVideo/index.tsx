@@ -30,8 +30,8 @@ function FormVideo() {
 			body: JSON.stringify(video)
 		})
 		setLoading(false)
-		closeModal()
 		revalidate()
+		closeModal()
 		router.replace(router.asPath)
 		toast.success('Vídeo adicionado!', {
 			autoClose: 3000
