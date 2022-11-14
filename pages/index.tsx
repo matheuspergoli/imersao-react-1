@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	const API_KEY = process.env.PUBLIC_API_KEY
 	const endpoint = 'https://graphql.datocms.com/'
 
-	const response = await fetch('https://aluratube-1.vercel.app/api/playlist', { cache: 'force-cache' })
+	const response = await fetch('https://aluratube-1.vercel.app/api/playlist')
 	const videos = await response.json()
 
 	const graphQLClient = new GraphQLClient(endpoint, {
