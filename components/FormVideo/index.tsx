@@ -19,6 +19,10 @@ function FormVideo() {
 		}
 	}
 
+	function revalidate() {
+		fetch('/api/playlist')
+	}
+
 	async function sendVideo(video: { title: string; url: string }) {
 		setLoading(true)
 		await fetch('https://aluratube-1.vercel.app/api/playlist', {
@@ -27,6 +31,7 @@ function FormVideo() {
 		})
 		setLoading(false)
 		closeModal()
+		revalidate()
 		router.replace(router.asPath)
 		toast.success('Vídeo adicionado!', {
 			autoClose: 3000
