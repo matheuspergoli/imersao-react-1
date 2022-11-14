@@ -191,7 +191,8 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
 		if (id && id[7].length == 11 ? id[7] : false) {
 			const newVideo = { title: video.title, link: `/video/${id[7]}`, thumb: `https://i.ytimg.com/vi/${id[7]}/hqdefault.jpg` }
 			data.novos.push(newVideo)
-			return res.status(200).json(newVideo)
+			// return res.status(200).json(newVideo)
+			return res.revalidate('/')
 		} else {
 			return res.status(400).json({ msg: 'Failed' })
 		}
