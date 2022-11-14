@@ -1,9 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
 import Menu from '../components/Menu'
 import Slide from '../components/Slide'
 import Banner from '../components/Banner'
+import { GetServerSideProps } from 'next'
 import Profile from '../components/Profile'
 import FormVideo from '../components/FormVideo'
 import AluraTubes from '../components/AluraTubes'
@@ -74,7 +74,7 @@ const query = gql`
 	}
 `
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const API_KEY = process.env.PUBLIC_API_KEY
 	const endpoint = 'https://graphql.datocms.com/'
 
@@ -105,10 +105,6 @@ interface FilterDataProps {
 function Home(props: DataProps) {
 	const { search } = React.useContext(SearchContext)
 	const { darkMode } = React.useContext(DarkModeContext)
-
-	React.useEffect(() => {
-		fetch('/api/revalidate')
-	}, [])
 
 	function filterDataBySearch(data: Array<FilterDataProps>) {
 		return search ? data.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : data
