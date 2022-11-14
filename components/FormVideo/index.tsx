@@ -20,7 +20,7 @@ function FormVideo() {
 	}
 
 	function revalidate() {
-		fetch('/api/playlist')
+		fetch('/api/revalidate')
 	}
 
 	async function sendVideo(video: { title: string; url: string }) {
