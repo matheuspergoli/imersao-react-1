@@ -106,6 +106,10 @@ function Home(props: DataProps) {
 	const { search } = React.useContext(SearchContext)
 	const { darkMode } = React.useContext(DarkModeContext)
 
+	React.useEffect(() => {
+		fetch('/api/revalidate')
+	}, [])
+
 	function filterDataBySearch(data: Array<FilterDataProps>) {
 		return search ? data.filter((video) => video.title.toLowerCase().includes(search.toLowerCase())) : data
 	}
