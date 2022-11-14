@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Menu from '../components/Menu'
 import Slide from '../components/Slide'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetStaticProps, GetStaticPropsResult } from 'next'
 import Banner from '../components/Banner'
 import Profile from '../components/Profile'
 import FormVideo from '../components/FormVideo'
@@ -74,11 +74,11 @@ const query = gql`
 	}
 `
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const API_KEY = process.env.PUBLIC_API_KEY
 	const endpoint = 'https://graphql.datocms.com/'
 
-	const response = await fetch('https://aluratube-1.vercel.app/api/playlist')
+	const response = await fetch('https://aluratube-1.vercel.app/api/playlist', { cache: 'force-cache' })
 	const videos = await response.json()
 
 	const graphQLClient = new GraphQLClient(endpoint, {
@@ -92,7 +92,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	const data = { ...videos, ...cmsVideos }
 
 	return {
-		props: { data }
+		props: { data },
+		revalidate: 1
 	}
 }
 
