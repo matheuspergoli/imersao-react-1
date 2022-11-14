@@ -13,9 +13,10 @@ Projeto da Imersão React 5 da Alura
 - Typescript
 - TailwindCSS
 - SwiperJS
-- React Icons
 - Formik
 - Yup
+- React Icons
+- React toastify
 - DatoCMS
 
 ## Mudanças que fiz no projeto
