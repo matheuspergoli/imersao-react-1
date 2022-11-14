@@ -38,3 +38,5 @@ Projeto da Imersão React 5 da Alura
 - O formulário foi feito com Formik e as validações com Yup.
 
 - Utilizei o DatoCMS para criar uma nova playlist de vídeos vindo diretamente de uma API GraphQL
+
+- React toastify foi utilizado para mostrar uma notificação quando um vídeo for adicionado
