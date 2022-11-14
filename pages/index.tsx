@@ -1,15 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
 import Menu from '../components/Menu'
 import Slide from '../components/Slide'
-import { GetServerSideProps, GetStaticProps, GetStaticPropsResult } from 'next'
 import Banner from '../components/Banner'
 import Profile from '../components/Profile'
 import FormVideo from '../components/FormVideo'
+import AluraTubes from '../components/AluraTubes'
 import { GraphQLClient, gql } from 'graphql-request'
 import { SearchContext } from '../context/SearchContext'
 import { DarkModeContext } from '../context/DarkModeContext'
-import AluraTubes from '../components/AluraTubes'
 
 interface DataProps {
 	data: {
