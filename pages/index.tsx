@@ -92,8 +92,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const data = { ...videos, ...cmsVideos }
 
 	return {
-		props: { data },
-		revalidate: 1
+		props: { data }
 	}
 }
 
