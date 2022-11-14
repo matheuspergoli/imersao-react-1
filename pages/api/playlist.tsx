@@ -183,7 +183,7 @@ const data: DataProps = {
 	novos: []
 }
 
-function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
 		const video = JSON.parse(req.body)
 		const getIdRegExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
@@ -192,7 +192,7 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
 			const newVideo = { title: video.title, link: `/video/${id[7]}`, thumb: `https://i.ytimg.com/vi/${id[7]}/hqdefault.jpg` }
 			data.novos.push(newVideo)
 			// return res.status(200).json(newVideo)
-			return res.revalidate('/')
+			return await res.revalidate('/')
 		} else {
 			return res.status(400).json({ msg: 'Failed' })
 		}
