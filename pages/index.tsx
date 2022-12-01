@@ -8,7 +8,7 @@ import Profile from '../components/Profile'
 import FormVideo from '../components/FormVideo'
 import AluraTubes from '../components/AluraTubes'
 import { GraphQLClient, gql } from 'graphql-request'
-import { SearchContext } from '../context/SearchContext'
+import useSearchContext from '../context/useSearchContext'
 import { DarkModeContext } from '../context/DarkModeContext'
 
 interface DataProps {
@@ -103,7 +103,7 @@ interface FilterDataProps {
 }
 
 function Home(props: DataProps) {
-	const { search } = React.useContext(SearchContext)
+	const { search } = useSearchContext()
 	const { darkMode } = React.useContext(DarkModeContext)
 
 	function filterDataBySearch(data: Array<FilterDataProps>) {
