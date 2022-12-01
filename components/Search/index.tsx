@@ -1,8 +1,8 @@
 import React from 'react'
-import { SearchContext } from '../../context/SearchContext'
+import useSearchContext from '../../context/useSearchContext'
 
 function Search() {
-	const { search, setSearch } = React.useContext(SearchContext)
+	const { search, setSearch } = useSearchContext()
 
 	return (
 		<div className='flex items-center w-full max-w-sm mr-10 sm:mr-0'>
