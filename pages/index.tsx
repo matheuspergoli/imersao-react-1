@@ -7,7 +7,6 @@ import { GetServerSideProps } from 'next'
 import Profile from '../components/Profile'
 import FormVideo from '../components/FormVideo'
 import AluraTubes from '../components/AluraTubes'
-import { GraphQLClient, gql } from 'graphql-request'
 import useSearchContext from '../context/useSearchContext'
 import { DarkModeContext } from '../context/DarkModeContext'
 
@@ -51,45 +50,11 @@ interface DataProps {
 	}
 }
 
-const query = gql`
-	query {
-		allPhonks {
-			id
-			link
-			thumb
-			title
-		}
-		allWarcrafts {
-			id
-			link
-			title
-			thumb
-		}
-		allSuggestions {
-			id
-			link
-			thumb
-			title
-		}
-	}
-`
-
 export const getServerSideProps: GetServerSideProps = async () => {
-	const API_KEY = process.env.PUBLIC_API_KEY
-	const endpoint = 'https://graphql.datocms.com/'
-
 	const response = await fetch('https://aluratube-1.vercel.app/api/playlist')
 	const videos = await response.json()
 
-	const graphQLClient = new GraphQLClient(endpoint, {
-		headers: {
-			'content-type': 'application/json',
-			authorization: 'Bearer ' + API_KEY
-		}
-	})
-	const cmsVideos = await graphQLClient.request(query)
-
-	const data = { ...videos, ...cmsVideos }
+	const data = { ...videos }
 
 	return {
 		props: { data }
@@ -121,13 +86,9 @@ function Home(props: DataProps) {
 			<FormVideo />
 			<main className='p-3 transition bg-backgroundBase-light text-textColorBase-light dark:text-textColorBase-dark dark:bg-backgroundBase-dark'>
 				<Slide title='Novos' data={filterDataBySearch(props.data.novos)} />
-				<Slide title='Sugestões' data={filterDataBySearch(props.data.allSuggestions)} />
-				<Slide title='World of Wacraft' data={filterDataBySearch(props.data.allWarcrafts)} />
-				<Slide title='Phonk' data={filterDataBySearch(props.data.allPhonks)} />
 				<Slide title='Podcasts' data={filterDataBySearch(props.data.podcasts)} />
 				<Slide title='Músicas' data={filterDataBySearch(props.data.musicas)} />
 				<Slide title='Front-end' data={filterDataBySearch(props.data.frontend)} />
-
 				<AluraTubes />
 			</main>
 		</div>
